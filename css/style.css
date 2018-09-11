@@ -7464,7 +7464,6 @@ button.btn_bg06 {
   padding: 0 12px;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  background: url("../img/category/bg_vline_26.png") no-repeat 0 50%;
 }
 
 .plan_mix_cnt dd li:first-child {
@@ -9642,6 +9641,115 @@ button.btn_bg06 {
   vertical-align: middle;
 }
 
+.goods_img_clr {
+  border-bottom: 1px solid #ddd;
+  background: #fff;
+}
+
+.goods_img_clr ul {
+  display: table;
+  margin: 0 auto;
+}
+
+.goods_img_clr li {
+  position: relative;
+  float: left;
+  width: 35px;
+  height: 35px;
+  padding: 8px 5px;
+  z-index: 2;
+}
+
+.goods_img_clr li .clr {
+  display: block;
+  overflow: hidden;
+  width: 27px;
+  height: 27px;
+  padding: 3px;
+  border: 1px solid #ccc;
+  background: #fff;
+}
+
+.goods_img_clr li .clr em {
+  display: block;
+  width: 27px;
+  height: 27px;
+  font-size: 0;
+  color: #fff;
+}
+
+.goods_img_clr li .clr em img {
+  display: block;
+  width: 27px;
+  height: 27px;
+}
+
+.goods_img_clr li .clr.on {
+  padding: 2px;
+  border: 2px solid #0162b1;
+}
+
+.goods_img_clr li .clr.out:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 9px;
+  left: 6px;
+  width: 33px;
+  height: 33px;
+  background: url("../img/goods/img_clr_none.png") repeat-y 0 0;
+  background-size: 33px 33px;
+  -webkit-background-size: 33px 33px;
+}
+
+.goods_img_clr li .clr.black em {
+  background: #000;
+}
+
+.goods_img_clr li .clr.gray em {
+  background: #999;
+}
+
+.goods_img_clr li .clr.white em {
+  background: #fff;
+}
+
+.goods_img_clr li .clr.red em {
+  background: #BF112E;
+}
+
+.goods_img_clr li .clr.orange em {
+  background: #FF6D1F;
+}
+
+.goods_img_clr li .clr.yello em {
+  background: #FFC30D;
+}
+
+.goods_img_clr li .clr.green em {
+  background: #679E02;
+}
+
+.goods_img_clr li .clr.blue em {
+  background: #0849E8;
+}
+
+.goods_img_clr li .clr.navy em {
+  background: #02173E;
+}
+
+.goods_img_clr li .clr.purple em {
+  background: #36175E;
+}
+
+.goods_img_clr li .clr.pink em {
+  background: #FA4985;
+}
+
+.goods_img_clr li .clr.brown em {
+  background: #BF895A;
+}
+
 /*# sourceMappingURL=category.css.map */
 /**
  * Swiper 4.3.3
@@ -10584,7 +10692,7 @@ button.swiper-pagination-bullet {
 
 .plan_mix_sel .mix_goods .mix_gd {
   margin: 0 20px;
-  height: 82px;
+  /*height: 82px*/
 }
 
 .plan_mix_sel .mix_goods li {
@@ -10628,11 +10736,11 @@ button.swiper-pagination-bullet {
 .plan_mix_sel .mix_goods .swiper-left {
   display: block;
   position: absolute;
-  top: 50px;
+  top: 50%;
   left: 0;
   width: 20px;
   height: 80px;
-  margin: -40px 0 0 0;
+  margin: -50px 0 0 0;
   filter: alpha(opacity=50);
   opacity: 0.5;
   -moz-opacity: 0.5;
@@ -10645,11 +10753,11 @@ button.swiper-pagination-bullet {
 .plan_mix_sel .mix_goods .swiper-right {
   display: block;
   position: absolute;
-  top: 50px;
+  top: 50%;
   right: 0;
   width: 20px;
   height: 80px;
-  margin: -40px 0 0 0;
+  margin: -50px 0 0 0;
   filter: alpha(opacity=50);
   opacity: 0.5;
   -moz-opacity: 0.5;
@@ -10661,8 +10769,8 @@ button.swiper-pagination-bullet {
 
 .plan_mix_sel .mix_goods .swiper-slide {
   float: left;
-  width: 80px;
-  height: 80px;
+  /*width: 80px;
+    height: 80px;*/
   text-align: center;
 }
 
@@ -10672,11 +10780,10 @@ button.swiper-pagination-bullet {
   border: 1px solid #fff;
 }
 
-.plan_mix_sel .mix_goods .swiper-slide img {
-  width: 80px;
-  height: 80px;
-}
-
+/*.plan_mix_sel .mix_goods .swiper-slide img {
+    width: 80px;
+    height: 80px
+}*/
 .plan_mix_pv {
   clear: both;
   overflow: hidden;
@@ -10809,12 +10916,40 @@ button.swiper-pagination-bullet {
   }
 }
 
-/*@import 'scss';
-@import 'video';
+video {
+  width: 100%;
+  height: auto;
+  border: none;
+}
+
+/* youtube */
+.video_youtube {
+  float: none;
+  clear: both;
+  width: 100%;
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 25px;
+  height: 0;
+}
+
+.video_youtube iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*
 @import 'fonts';
 @import 'svg';
 @import 'git';
 @import 'etc';
+@import 'scss';
 
 css to scss
 http://beautifytools.com/css-to-scss-converter.php
