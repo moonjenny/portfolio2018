@@ -2975,7 +2975,6 @@ button.btn_bg06 {
 
 .main_top .gnb_wrap {
   position: relative;
-  width: 100%;
   background: #fff;
   filter: alpha(opacity=80);
   opacity: 0.8;
@@ -2989,18 +2988,13 @@ button.btn_bg06 {
 }
 
 .main_top .gnb_wrap .gnb ul {
-  overflow: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+  overflow-x: auto;
   height: 40px;
   z-index: 2;
 }
 
 .main_top .gnb_wrap .gnb ul li {
-  overflow: hidden;
-  float: left;
+  display: inline-block;
   height: 40px;
 }
 
