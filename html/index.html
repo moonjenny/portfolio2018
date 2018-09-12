@@ -75,14 +75,14 @@
   	<div class="main_top" id="main_top">
   		<div class="gnb_wrap">
   			<div class="gnb" id="gnb">
-  				<ul>
-  					<li class="on"><a href="#gnb">홈</a></li>
-  					<li><a href="#gnb">카테고리명 카테고리명 카테고리명 </a></li>
-  					<li><a href="#gnb">베스트</a></li>
-  					<li><a href="#gnb">기획전</a></li>
-  					<li><a href="#gnb">이벤트</a></li>
-  					<li><a href="#gnb">하나더</a></li>
-  					<li><a href="#gnb">무료배송</a></li>
+  				<ul class="swiper-wrapper">
+  					<li class="swiper-slide on"><span>홈</span></li>
+  					<li class="swiper-slide"><span>카테고리명 카테고리명 카테고리명 </span></li>
+  					<li class="swiper-slide"><span>베스트</span></li>
+  					<li class="swiper-slide"><span>기획전</span></li>
+  					<li class="swiper-slide"><span>이벤트</span></li>
+  					<li class="swiper-slide"><span>하나더</span></li>
+  					<li class="swiper-slide"><span>무료배송</span></li>
   				</ul>
   			</div>
   		</div>
@@ -93,62 +93,38 @@
   			<li class="swiper-slide"></li>
   		</ul>
   	</div>
-  	<script type="text/javascript">
+    <script type="text/javascript">
   		var GNB_SCROLL;
   		var LOADING_HTML = '<div class="loading"><span>로딩중</span></div>';
 
-  		// GNB INIT.
-  		function initNavigation() {
-  			//resizeNavigation();
-  			var gnb_options = { mouseWheel: false, probeType: 1, scrollY: false, scrollX: true, scrollbars: false, fadeScrollbars: false, click:iScrollClick()}
-
-  			if(/iPhone|iPad|iPod|Macintosh/i.test(navigator.userAgent)){
-  				gnb_options.preventDefault = false;
-  			}
-
-  			if(scroll_count01 == 0) {
-  				GNB_SCROLL = new IScroll('#gnb', gnb_options);
-  				scroll_count01++;
-  			}
-  		}
-
-  		// GNB RESIZE.
-  		/*function resizeNavigation() {
-  			var W = 0;
-  			var lis = $("#gnb li");
-  			var li;
-  			lis.each(function (idx, itm) {
-  				li = $(itm);
-  				W += li.outerWidth();
+  		$(document).ready(function() {
+  			GNB_SCROLL = new Swiper('#gnb',{
+  				createPagination: false,
+  				freeMode: true,
+  				freeModeFluid: true,
+  				slidesPerView: 'auto',
+  				roundLengths: true,
+  				onSlideClick: function(){
+            $(window).scrollTop(0);
+  					$("#gnb li").removeClass("on");
+  					$('#m_cts').find('.swiper-slide').eq(1).html(LOADING_HTML);
+  					GNB_SCROLL.swipeTo(GNB_SCROLL.clickedSlideIndex);
+  					call_slide(GNB_SCROLL.clickedSlideIndex);
+  				 }
   			});
-  			if (W <= 0) { return; }
-  			W += 5;
-  			$("#gnb ul").width(W);
 
-  			if (GNB_SCROLL != undefined) {
-  				GNB_SCROLL.refresh();
-  			}
-  		}*/
+  			$(window).resize(function(){
+  				GNB_SCROLL.reInit();
+  			});
+  		});
+
 
   		$(window).load(function() {
-  			initNavigation();
   			mainCate.prependSlide(LOADING_HTML, 'swiper-slide','li');
   			$('#m_cts').find('.swiper-slide').eq(1).addClass('swiper-slide-active').html(LOADING_HTML);
   			mainCate.insertSlideAfter(1, LOADING_HTML, 'swiper-slide','li');
   			mainCate.swipeTo(1, 0, true);
   			call_slide(0);
-  		});
-
-
-  		$('#gnb li').find('a').click(function() {
-  			var idx = $(".gnb li").index($(this).parent());
-  			if($('#m_cts').find('.swiper-slide').eq(1).hasClass('swiper-slide-active')){
-  				$('#m_cts').find('.swiper-slide').eq(1).html(LOADING_HTML);
-  				window.scrollTo(0, 0);
-  				GNB_SCROLL.scrollToElement($(this).parent().get(0), 200);
-  				call_slide(idx);
-  				return false;
-  			}
   		});
 
   		function change_slide(idx) {
@@ -166,7 +142,7 @@
 
   		function call_slide(idx){
   			$.ajax({
-  				type : 'get',
+  				type : 'post',
   				isLocal: true,
   				headers: { "cache-control": "no-cache" },
   				url : 'main_'+ idx +'.html',
@@ -183,29 +159,29 @@
   				},
   				error: function(){
   					setTimeout(function() { call_slide(0) }, 100);
-  					GNB_SCROLL.scrollTo(0, 0, 100);
+  					GNB_SCROLL.swipeTo(idx, 200);
   				}
   			});
-
   		}
 
   		var mainCate = new Swiper('#m_cts',{
   			loop: false,
+  			touchRatio: 0.3,  //2016-10-31
   			simulateTouch : true,
   			calculateHeight:true,
   			onSlideNext : function() {
-  				var index = parseInt($('.gnb').find('li.on').index()) + 1;
-  				var max_gnb = $('.gnb li').length;
+  				var index = parseInt($('#gnb').find('li.on').index()) + 1;
+  				var max_gnb = $('#gnb li').length;
   				if(index == max_gnb ){
   					var idx = 0;
-  					GNB_SCROLL.scrollTo(0, 0, 200);
+  					GNB_SCROLL.swipeTo(0, 200);
   				}else{
   					var idx = index;
   					var w_width = $(window).width();
-  					var	active_li = $('.gnb').find('li.on').next('li');
+  					var	active_li = $('#gnb').find('li.on').next('li');
   					var active_left = active_li.offset().left + active_li.outerWidth();
   					if(active_left > w_width){
-  						GNB_SCROLL.scrollToElement(active_li.get(0), 200);
+  						GNB_SCROLL.swipeTo(idx, 200);
   					}
   				}
   				change_slide(idx);
@@ -213,14 +189,14 @@
   			onSlidePrev : function() {
   				var index = parseInt($('#m_cts' ).find('.slide_cont').attr('data-index'));
   				if(index == 0 ){
-  					var idx = $('.gnb li').length -1;
-  					GNB_SCROLL.scrollTo(GNB_SCROLL.maxScrollX , 0, 200);
+  					var idx = $('#gnb li').length -1;
+  						GNB_SCROLL.swipeTo(idx, 200);
   				}else{
   					var idx = index - 1;
   					var active_li = $('.gnb').find('li.on').prev('li');
   					var active_left = active_li.offset().left;
   					if(active_left <= 0){
-  						GNB_SCROLL.scrollToElement(active_li.get(0), 200);
+  						GNB_SCROLL.swipeTo(idx, 200);
   					}
   				}
   				change_slide(idx);
@@ -232,6 +208,7 @@
   			setSlideHeight();
   		});
   	</script>
+
   </div>
   <!-- //CONTENT -->
 

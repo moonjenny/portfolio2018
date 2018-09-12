@@ -2976,6 +2976,8 @@ button.btn_bg06 {
 .main_top .gnb_wrap {
   position: relative;
   background: #fff;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   filter: alpha(opacity=80);
   opacity: 0.8;
   -moz-opacity: 0.8;
@@ -2988,23 +2990,21 @@ button.btn_bg06 {
 }
 
 .main_top .gnb_wrap .gnb ul {
-  overflow-x: auto;
+  overflow: hidden;
   height: 40px;
   z-index: 2;
-  box-sizing: border-box;
-  word-break: keep-all;
-  overflow-x: scroll;
-  white-space: nowrap;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .main_top .gnb_wrap .gnb ul li {
-  display: inline-block;
+  position: relative;
   height: 40px;
-  word-break: keep-all;
-  white-space: nowrap;
+  float: left;
 }
 
-.main_top .gnb_wrap .gnb ul li a {
+.main_top .gnb_wrap .gnb ul li span {
   display: block;
   width: auto;
   height: 40px;
@@ -3018,7 +3018,7 @@ button.btn_bg06 {
   text-align: center;
 }
 
-.main_top .gnb_wrap .gnb ul li.on a {
+.main_top .gnb_wrap .gnb ul li.on span {
   border-bottom: 3px solid #111;
   font-weight: bold;
 }
