@@ -2600,9 +2600,15 @@ button.btn_bg06 {
 				overflow-x: auto;
 				height: 40px;
 				z-index: 2;
+				box-sizing: border-box;
+				word-break: keep-all;
+				overflow-x: scroll;
+				white-space: nowrap;
 				li {
 					display:inline-block;
 					height: 40px;
+					word-break: keep-all;
+					white-space: nowrap;
 					a {
 						display: block;
 						width: auto;

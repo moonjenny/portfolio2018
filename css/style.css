@@ -2991,11 +2991,17 @@ button.btn_bg06 {
   overflow-x: auto;
   height: 40px;
   z-index: 2;
+  box-sizing: border-box;
+  word-break: keep-all;
+  overflow-x: scroll;
+  white-space: nowrap;
 }
 
 .main_top .gnb_wrap .gnb ul li {
   display: inline-block;
   height: 40px;
+  word-break: keep-all;
+  white-space: nowrap;
 }
 
 .main_top .gnb_wrap .gnb ul li a {
@@ -9817,7 +9823,6 @@ button.btn_bg06 {
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  width: 100%;
   height: 100%;
   position: relative;
   -webkit-transition-property: -webkit-transform;
