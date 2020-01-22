@@ -1,19 +1,28 @@
 // common-border.scss stylesheet
 
-/* 공통 보더 사이즈 */
-$border-size1: 1px;
-$border-size2: 2px;
-$border-size3: 3px;
+/* 공통 보더 사이즈 PX */
+$border-size-1px: 1px;
+$border-size-2px: 2px;
+$border-size-3px: 3px;
 
+/* 공통 보더 사이즈 EM */
+$border-size-1em: 1em;
+$border-size-2em: 2em;
+$border-size-3em: 3em;
 
 /* 공통 보더 스타일 */
-$border-style1: solid;
-$border-style2: dotted;
-$border-style3: dashed;
-$border-style3: double;
-$border-style4: groove;
-$border-style5: ridge;
-$border-style6: inset;
-$border-style7: outset;
-$border-style8: none;
-$border-style9: hidden;
+$border-style-solid: solid;
+$border-style-dotted: dotted;
+$border-style-dashed: dashed;
+$border-style-double: double;
+$border-style-groove: groove;
+$border-style-ridge: ridge;
+$border-style-inset: inset;
+$border-style-outset: outset;
+$border-style-none: none;
+$border-style-hidden: hidden;
+
+/* border radius */
+
+
+/* border radius */
